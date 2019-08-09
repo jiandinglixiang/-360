@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button style="width: 100px;height: 50px" onclick="qw()">按钮</button>
+<script>
+  let s = [];
+  for (let i = 0; i < 10; i += 0.01) {
+    s.push({
+      val: i.toFixed(2),
+      val2: f(i),
+      isq: i.toFixed(2) === f(i),
+      asd: i
+    });
+    if (i.toFixed(2) !== f(i)) {
+      console.log(i.toFixed(2), f(i), i);
+    }
+  }
+  console.log(s);
+
+  function f(x) {
+    return (Math.floor(Math.floor(x * 1000) / 10) / 100).toFixed(2);
+  }
+
+  // (function(x) {
+  //
+  //   x.sort(function(a, b) {
+  //     return -1
+  //   });
+  //   console.log(x)
+  // })(['v212', '0', 'v211', 'v022', 'v021', 'v012', 'v011', 'v002', 'v001', '0']);
+  // let [a, s] = [0, 0];
+  //
+  // function qw() {
+  //   for (let i = 0; i < 100000; i++) {
+  //     mnb();
+  //   }
+  // }
+  //
+  // async function mnb() {
+  //   let pp = await f();
+  //   console.log('最后', pp);
+  //   console.log('最后', pp);
+  //   console.log('最后', pp);
+  // }
+  //
+  // async function asd() {
+  //   const pp = await f()
+  //     .catch(function(val) {
+  //       a++;
+  //       return Promise.reject(val);
+  //     });
+  //
+  //   console.log('最后', pp);
+  //   console.log('最后', pp);
+  //   console.log('最后', pp);
+  // }
+  //
+  // function f() {
+  //   return new Promise(function(resolve, reject) {
+  //     // resolve({ a: 1 });
+  //     reject(Math.random() * s * 10);
+  //   });
+  // }
+</script>
+</body>
+</html>
