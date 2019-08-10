@@ -13,26 +13,13 @@ module.exports = app => {
       UserSchemaChid,
     ],
   });
-  UserSchema.pre('save', function(next) {
+  UserSchemaChid.pre('save', function(next) {
+    console.log(...arguments);
     next();
   });
-
-  const UserSchema = new Schema({
-    loginAccount: { type: String },
-    password: { type: String },
-    name: { type: String },
-    headPortraitUrl: { type: String },
-    balance: { type: Number },
-    phone: { type: Number },
-    location: { type: String },
-    signature: { type: String },
-    profile: { type: String },
-    avatar: { type: String },
-    githubId: { type: String },
-    githubUsername: { type: String },
-    githubAccessToken: { type: String },
-    create_at: { type: Date, default: Date.now },
-    update_at: { type: Date, default: Date.now },
+  UserSchema.pre('save', function(next) {
+    console.log(...arguments);
+    next();
   });
-  return mongoose.model('Test', UserSchema);
+  return mongoose.model('ApiTest', UserSchema);
 };

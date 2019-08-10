@@ -21,5 +21,5 @@ module.exports = app => {
     console.log(...arguments);
     next();
   });
-  return mongoose.model('Test', UserSchema);
+  return mongoose.model('AdminTest', UserSchema);
 };

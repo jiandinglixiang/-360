@@ -1,7 +1,7 @@
 'use strict';
 const Service = require('egg').Service;
 
-class Token extends Service {
+class Test extends Service {
   async update() {
     const user = this.ctx.model.Test;
     console.log(this.app.mongoose.version);
@@ -20,4 +20,4 @@ class Token extends Service {
   }
 }
 
-module.exports = Token;
+module.exports = Test;
