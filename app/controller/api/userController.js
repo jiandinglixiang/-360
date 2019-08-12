@@ -8,13 +8,21 @@ class UserController extends Controller {
 
   async create() {
     const { ctx } = this;
-    ctx.body = path.resolve(__dirname, '../public/asd.html');
+    const { tel, password, code } = ctx.request.body;
+    ctx.body = await ctx.service.Api.userService.signIn(ctx.request.body);
   }
 
   async show() {
     // 获取资料
     const { ctx } = this;
-    ctx.body = path.resolve(__dirname, '../public/asd.html');
+    const UserSchema = new ctx.model.Api.User({
+      cardName: '15577648264',
+      password: '15577648264', // 密码
+      name: '15577648264', // 昵称
+      tel: '15577648264', // 号码
+    });
+    console.log(UserSchema);
+    ctx.body = await UserSchema.save();
   }
 
   async edit(ctx) {
