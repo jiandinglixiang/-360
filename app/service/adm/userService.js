@@ -1,7 +1,7 @@
 'use strict';
 const Service = require('egg').Service;
 
-class UserManage extends Service {
+class userService extends Service {
   async signIn() {
     // 注册
     return '';
@@ -18,4 +18,4 @@ class UserManage extends Service {
   }
 }
 
-module.exports = UserManage;
+module.exports = userService;

@@ -1,32 +1,33 @@
 'use strict';
+const { CODE_10000 } = require('../../util/current');
 const Service = require('egg').Service;
-const md5 = require('crypto')
-  .createHash('md5');
+const md5 = require('crypto');
 
-class UserManage extends Service {
-  async signIn() {
+class userService extends Service {
+  async create({ tel, password, userToken, code }) {
     // 注册
-    const { ctx, login } = this;
+    const { ctx } = this;
     const UserMode = ctx.model.Api.UserMode;
-    md5.update('password');
-    const password = md5.digest('hex');
-    UserMode.create({
-      password: md5('15577648264'), // 密码
-      name: md5('15577648264'), // 昵称
-      tel: '15577648264', // 号码
+    const pass = md5.createHash('md5')
+      .update(password)
+      .digest('hex');
+    return await UserMode.create({
+      userToken,
+      password: pass, // 密码
+      name: tel, // 昵称
+      tel, // 号码
     });
-    return '';
   }
 
-  async login() {
-    // 登陆
-    return '';
+  async findOneUser(tel) {
+    // 查找用户
+    return this.ctx.model.Api.UserMode.findOne({ tel });
   }
 
-  async updateProfile() {
-    // 更新资料
-    return '';
+  async updateOneProfile(id, obj) {
+    // 覆盖更新资料
+    // return this.ctx.model.Api.UserMode.findByIdAndUpdate(id, obj);
   }
 }
 
-module.exports = UserManage;
+module.exports = userService;

@@ -7,23 +7,42 @@
 <body>
 <button style="width: 100px;height: 50px" onclick="qw()">按钮</button>
 <script>
-  let s = [];
-  for (let i = 0; i < 10; i += 0.01) {
-    s.push({
-      val: i.toFixed(2),
-      val2: f(i),
-      isq: i.toFixed(2) === f(i),
-      asd: i
-    });
-    if (i.toFixed(2) !== f(i)) {
-      console.log(i.toFixed(2), f(i), i);
-    }
+  async function f() {
+    return Promise.reject(321);
   }
-  console.log(s);
 
-  function f(x) {
-    return (Math.floor(Math.floor(x * 1000) / 10) / 100).toFixed(2);
+  f1();
+
+  async function f1() {
+    const s = await f()
+      .then(function(a) {
+        console.log(a);
+        return a + 1;
+      })
+      .catch(function(b) {
+        console.log(b);
+        return 'error';
+      });
+    console.log(s, 888);
   }
+
+  // let s = [];
+  // for (let i = 0; i < 10; i += 0.01) {
+  //   s.push({
+  //     val: i.toFixed(2),
+  //     val2: f(i),
+  //     isq: i.toFixed(2) === f(i),
+  //     asd: i
+  //   });
+  //   if (i.toFixed(2) !== f(i)) {
+  //     console.log(i.toFixed(2), f(i), i);
+  //   }
+  // }
+  // console.log(s);
+  //
+  // function f(x) {
+  //   return (Math.floor(Math.floor(x * 1000) / 10) / 100).toFixed(2);
+  // }
 
   // (function(x) {
   //

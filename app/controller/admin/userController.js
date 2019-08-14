@@ -3,7 +3,7 @@
 const Controller = require('egg').Controller;
 const path = require('path');
 
-class UserController extends Controller {
+class userController extends Controller {
 
   // async create() {
   //   const { ctx } = this;
@@ -27,4 +27,4 @@ class UserController extends Controller {
   // }
 }
 
-module.exports = UserController;
+module.exports = userController;
