@@ -11,6 +11,7 @@ module.exports = app => {
     headPortraitUrl: { type: String }, // 头像url
     balance: { type: Number, default: 0 }, // 金额
     location: { type: String }, // 位置
+    accountName: { type: String }, // 开户姓名
     cardName: { type: String }, // 银行卡姓名
     cardNumber: { type: String }, // 银行卡号
     bankOfDeposit: { type: String }, // 开户行名称
@@ -19,8 +20,16 @@ module.exports = app => {
   });
   neSchema.index({ name: 1 });
   neSchema.index({ tel: 1 }, { unique: true });
-  neSchema.pre('save', function(next) {
-    next();
-  });
+  neSchema.virtual('avatar_url')
+    .get(function() {
+      if (this.headPortraitUrl) {
+        return this.headPortraitUrl;
+      }
+      return 'https://img.alicdn.com/bao/uploaded/i2/1773211220/O1CN01sISiKE1Ksnjzsr8Ne_!!1773211220.jpg_728x728.jpg';
+    });
+
+  // neSchema.pre('save', function(next) {
+  //   next();
+  // });
   return mongoose.model('Api', neSchema);
 };

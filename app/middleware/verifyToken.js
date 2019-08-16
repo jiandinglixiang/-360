@@ -1,53 +1,50 @@
 'use strict';
-const { decodeToken } = require('../util/tool');
 
 module.exports = () => {
   return async function verifyToken(ctx, next) {
-    console.log('----', '\n', ctx.app, '\n', '-----');
-
-    let params = ctx.request.body;
-    if (ctx.req.method === 'GET') {
+    let params = '';
+    if (ctx.query.token) {
       params = ctx.query;
+    } else if (ctx.request.body.token) {
+      params = ctx.request.body;
     }
-    ctx.validate({ token: { type: 'string' } }, params);
-
-    const decode = decodeToken(params.token, ctx.app.config.AES_KEY, ctx.app.config.AES_IV);
-    if (!decode || decode.time + 1440 < Date.now() / 1000) {
-      // 超时
-      ctx.body = {
-        code: 10003,
-        data: null,
-        msg: '密码过期请重新登陆',
-      };
-      return;
-    }
-    let redisUserToken = ctx.app.redis.get(decode.tel);
-
-    if (!redisUserToken) {
-      const doc = await ctx.service.api.userService.findOneUser(decode.tel);
-      if (!doc) {
-        ctx.body = {
+    ctx.validate({
+      token: { type: 'string' },
+      tel: {
+        type: 'string',
+        format: /^1((3[\d])|(4[5,6,9])|(5[0-3,5-9])|(6[5-7])|(7[0-8])|(8[1-3,5-8])|(9[1,8,9]))\d{8}$/,
+      },
+    }, params);
+    const userService = Object.assign(ctx.service.api.userService);
+    const Token = await await userService.getCacheUserToken(params.tel);
+    if (!Token) {
+      const user = await userService.findOneUser(params.tel);
+      if (!user) {
+        ctx.response.body = {
           code: 10003,
           data: null,
           msg: 'token错误',
         };
         return;
       }
-      redisUserToken = { writeTime: Math.floor(Date.now() / 1000), userToken: doc.userToken };
-    }
-
-    if (redisUserToken.userToken === params.token) {
-      redisUserToken.updateTime = Math.floor(Date.now() / 1000);
-      ctx.app.redis.set(decode.tel, redisUserToken);
-    } else {
-      ctx.body = {
+      if (user.userToken !== params.token) {
+        ctx.response.body = {
+          code: 10003,
+          data: null,
+          msg: '密码过期请重新登陆',
+        };
+        return;
+      }
+    } else if (Token !== params.token) {
+      ctx.response.body = {
         code: 10003,
         data: null,
         msg: '密码过期请重新登陆',
       };
       return;
     }
-    next();
-    // 后续中间件执行完成后将响应体转换成 gzip
+
+    await userService.setCacheUserToken(params.tel, Token);
+    await next();
   };
 };

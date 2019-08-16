@@ -17,8 +17,9 @@ module.exports = appInfo => {
   // 用于Tonke AES加密解密
   config.AES_KEY = '7B190099522032FC';
   config.AES_IV = '332CAABD752453AA';
+  config.TOKEN_PAST_DUE_TIME = 1440;
   // add your middleware config here
-  config.middleware = [ ];
+  config.middleware = [];
 
   // add your user config here
   const userConfig = {

@@ -3,7 +3,6 @@
 class App {
   constructor(app) {
     this.app = app;
-    // console.log(app);
   }
 
   configWillLoad() {

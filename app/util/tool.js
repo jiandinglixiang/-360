@@ -13,12 +13,8 @@ module.exports = {
     });
   },
   createToken(key, iv, tel) {
-    const data = {
-      tel,
-      time: Math.floor(Date.now() / 1000),
-    };
     const cipher = crypto.createCipheriv('aes-128-cbc', key, iv);
-    let sing = cipher.update(JSON.stringify(data), 'utf8', 'hex');
+    let sing = cipher.update(`${tel}, '加密', ${Math.random()}`, 'utf8', 'hex');
     sing += cipher.final('hex');
     return sing;
   },
@@ -27,11 +23,6 @@ module.exports = {
     const cipher = crypto.createDecipheriv('aes-128-cbc', key, iv);
     src += cipher.update(sign, 'hex', 'utf8');
     src += cipher.final('utf8');
-    try {
-      src = JSON.parse(src);
-    } catch (e) {
-      return null;
-    }
-    return src;
+    return src.split(',')[0];
   },
 };

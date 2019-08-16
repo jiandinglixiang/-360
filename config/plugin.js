@@ -7,7 +7,7 @@ module.exports = {
   //   enable: true,
   // }
   redis: {
-    enable: false,
+    enable: true,
     package: 'egg-redis',
   },
   mongoose: {
