@@ -30,7 +30,6 @@
     "stop": "egg-scripts stop --title=egg-server-fff360",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
-    "debug2": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",
     "cov": "egg-bin cov",

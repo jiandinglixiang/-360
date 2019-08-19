@@ -77,18 +77,22 @@ class infoController extends Controller {
         data: null,
         msg: 'token错误',
       };
+      return;
     } else if (user.userToken !== body.token) {
       ctx.response.body = {
         code: 10003,
         data: null,
         msg: 'token错误',
       };
+      return;
     }
-    user.accountName = body.account; // 开户姓名
-    user.cardName = body.type; // 银行卡姓名
-    user.cardNumber = body.no; // 银行卡号
-    user.bankOfDeposit = body.address; // 开户行名称
-    user.save();
+    await user.updateOne({
+      accountName: body.account, // 开户姓名
+      accountName2: body.account, // 开户姓名
+      cardName: body.type, // 银行卡姓名
+      cardNumber: body.no, // 银行卡号
+      bankOfDeposit: body.address, // 开户行名称
+    });
     ctx.response.body = {
       code: 0,
       data: null,

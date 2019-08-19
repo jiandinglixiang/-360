@@ -18,6 +18,7 @@ module.exports = app => {
   }, {
     timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' },
   });
+
   neSchema.index({ name: 1 });
   neSchema.index({ tel: 1 }, { unique: true });
   neSchema.virtual('avatar_url')

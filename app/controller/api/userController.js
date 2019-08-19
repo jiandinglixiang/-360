@@ -167,5 +167,4 @@ class userController extends Controller {
     };
   }
 }
-[{"id":"1","name":"中国工商银行"},{"id":"2","name":"中国农业银行"},{"id":"3","name":"中国银行"},{"id":"4","name":"中国建设银行"},{"id":"5","name":"交通银行"},{"id":"6","name":"中信银行"},{"id":"7","name":"中国光大银行"},{"id":"8","name":"华夏银行"},{"id":"9","name":"中国民生银行"},{"id":"10","name":"广发银行"},{"id":"11","name":"平安银行（原深圳发展银行）"},{"id":"12","name":"招商银行"},{"id":"13","name":"上海浦东发展银行"},{"id":"21","name":"邮政储蓄"},{"id":"22","name":"兴业银行"},{"id":"102","name":"广州银行"}]
 module.exports = userController;
