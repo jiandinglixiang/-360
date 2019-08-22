@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "env": {
+    "es6": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 8,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "react/prop-types": 0,
+    //防止在React组件定义中丢失props验证
+//    "react/jsx-indent": [1, "tab"],
+//    "react/jsx-indent-props": [2, "tab"],
+    //验证JSX中的props缩进
+    "camelcase": 0,
+    //强制驼峰法命名
+    "react/no-deprecated": 1
+    //不使用弃用的方法
+  },
+  "globals": {
+    "EASY_ENV_IS_PROD": true,
+    "EASY_ENV_IS_NODE": true,
+    "EASY_ENV_IS_BROWSER": true,
+    "EASY_ENV_IS_DEV": true
+  }
+}

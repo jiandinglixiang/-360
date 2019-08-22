@@ -1,0 +1,21 @@
+{
+  "home/index.css": "/public/css/home/index.css",
+  "home/index.js": "/public/js/chunk/home/index.js",
+  "runtime.js": "/public/js/runtime.js",
+  "deps": {
+    "home/index.js": {
+      "js": [
+        "/public/js/runtime.js",
+        "/public/js/chunk/home/index.js"
+      ],
+      "css": [
+        "/public/css/home/index.css"
+      ]
+    }
+  },
+  "info": {
+    "publicPath": "/public/",
+    "buildPath": "\\public",
+    "mapped": true
+  }
+}

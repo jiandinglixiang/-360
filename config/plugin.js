@@ -6,6 +6,10 @@ module.exports = {
   // static: {
   //   enable: true,
   // }
+  // view: {
+  //   enable: false,
+  //   package: 'egg-view',
+  // },
   redis: {
     enable: true,
     package: 'egg-redis',
@@ -17,5 +21,9 @@ module.exports = {
   validate: {
     enable: true,
     package: 'egg-validate',
+  },
+  reactssr: {
+    enable: true,
+    package: 'egg-view-react-ssr',
   },
 };

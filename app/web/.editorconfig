@@ -1,0 +1,13 @@
+[*.{js, jsx, ts, tsx, vue}]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[{.babelrc, .prettierrc, .stylelintrc, .eslintrc, wx_sns_auth, jest.config, wx_sns_oauth2_access_token, *.json, *.jsb3, *.jsb2, *.bowerrc}]
+indent_style = space
+indent_size = 2
+
+[*.scss]
+indent_style = space
+indent_size = 2

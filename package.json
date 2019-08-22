@@ -7,20 +7,43 @@
     "declarations": true
   },
   "dependencies": {
+    "antd": "^3.22.0",
+    "axios": "^0.19.0",
     "egg": "^2.15.1",
     "egg-mongoose": "^3.2.0",
     "egg-redis": "^2.3.2",
     "egg-scripts": "^2.11.0",
-    "egg-validate": "^2.0.2"
+    "egg-validate": "^2.0.2",
+    "egg-view-react-ssr": "^2.5.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   },
   "devDependencies": {
+    "babel-plugin-import": "^1.12.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-object-assign": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
     "autod": "^3.0.1",
     "autod-egg": "^1.1.0",
-    "egg-bin": "^4.11.0",
+    "babel-loader": "^8.0.0",
+    "cross-env": "^5.2.0",
+    "easywebpack-cli": "^4.5.1",
+    "easywebpack-react": "^4.4.4",
+    "egg-bin": "^4.13.0",
     "egg-ci": "^1.11.0",
     "egg-mock": "^3.21.0",
+    "egg-webpack": "^4.5.1",
+    "egg-webpack-react": "^2.0.3",
     "eslint": "^5.13.0",
-    "eslint-config-egg": "^7.1.0"
+    "eslint-config-egg": "^7.1.0",
+    "eslint-plugin-react": "^7.1.0",
+    "less": "^3.10.2",
+    "less-loader": "^5.0.0"
   },
   "engines": {
     "node": ">=10.0.0"
@@ -35,7 +58,9 @@
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "autod": "autod",
+    "easy-clean": "easy clean all",
+    "easy-build": "easy build"
   },
   "ci": {
     "version": "10"

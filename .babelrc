@@ -1,0 +1,55 @@
+{
+  "env": {
+    "node": {
+      "presets": [
+        "@babel/preset-react",
+        [
+          "@babel/preset-env",
+          {
+            "modules": false,
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ],
+      "plugins": [
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-proposal-class-properties"
+      ]
+    },
+    "web": {
+      "presets": [
+        "@babel/preset-react",
+        [
+          "@babel/preset-env",
+          {
+            "modules": false,
+            "targets": {
+              "browsers": [
+                "last 2 versions",
+                "safari >= 7"
+              ]
+            }
+          }
+        ]
+      ],
+      "plugins": [
+        "react-hot-loader/babel",
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-transform-object-assign",
+        "@babel/plugin-syntax-dynamic-import",
+        [
+          "import",
+          {
+            "libraryName": "antd",
+            "libraryDirectory": "lib",
+            "style": true
+          }
+        ]
+      ]
+    }
+  },
+  "comments": false
+}

@@ -1,11 +1,14 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- 使用双花括号(double-mustache)进行 HTML 转义插值(HTML-escaped interpolation) -->
+    <title>{{ title }}</title>
+
+    <!-- 使用三花括号(triple-mustache)进行 HTML 不转义插值(non-HTML-escaped interpolation) -->
+    {{{ meta }}}
 </head>
 <body>
-<button style="width: 100px;height: 50px" onclick="qw()">按钮</button>
+<!--vue-ssr-outlet-->
+<button style="width: 100px;height: 50px" onclick="f(s)">{{ title }}</button>
 <script>
   function f1() {
     return new Promise(function(resolve, reject) {

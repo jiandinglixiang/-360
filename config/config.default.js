@@ -1,7 +1,8 @@
 /* eslint valid-jsdoc: "off" */
 
 'use strict';
-
+const path = require('path');
+const fs = require('fs');
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -52,7 +53,15 @@ module.exports = appInfo => {
   config.static = {
     maxAge: 31536000,
   };
-
+  // config.siteFile = {
+  //   '/favicon.ico': fs.readFileSync(path.join(appInfo.baseDir, 'app/web/asset/images/favicon.ico'))
+  // };
+  config.reactssr = {
+    layout: path.join(appInfo.baseDir, 'app/view/layout.html'),
+    renderOptions: {
+      basedir: path.join(appInfo.baseDir, 'app/view'),
+    },
+  };
   return {
     ...config,
     ...userConfig,
